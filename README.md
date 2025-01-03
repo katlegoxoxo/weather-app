@@ -2,7 +2,7 @@ Weather App
 
 Welcome to the Weather App project! This feature-rich application provides real-time weather data, forecasts, and interactive features to deliver an engaging and informative user experience.  
 
-Whether you're a weather enthusiast, a web developer expanding your skillset, or just curious about building dynamic web applications, this project is perfect for you!  
+
 
 ---
 
