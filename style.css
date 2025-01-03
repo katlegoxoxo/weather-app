@@ -85,3 +85,13 @@ body {
     padding: 1rem;
 
 }
+.Highlight i {
+    font-size: 45px;
+}
+.sun span{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+
