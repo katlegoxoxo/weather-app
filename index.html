@@ -21,7 +21,7 @@
                     <option> °C</option>
                     <option>°F</option>
                 </select>
-                <i class="fa fa-search"></i>
+                <i class="fa fa-search" onclick="findUserLocation()"></i>
             </div>
             <div class="weatherIcon"></div>
             <h2 class="temperature"></h2>
@@ -39,11 +39,11 @@
                     <i class="fa-solid fa-water"></i>
                     <h1 id="HValue"></h1>
                 </div>
-        
+
                 <div class="windSpeed">
                     Wind Speed
                     <i class="fa-solid fa-wind"></i>
-                    <h1 id="HValue"></h1>
+                    <h1 id="WValue"></h1>
                 </div>
                 <div class="sun">
                     <span>
@@ -66,13 +66,14 @@
                     <h1 id="UVValue"></h1>
                 </div>
                 <div class="pressure">
-                 Pressure
-                    <i class="fa-solid fa-volcon"></i>
+                    Pressure
+                    <i class="fa-solid fa-volcano"></i>
                     <h1 id="PValue"></h1>
                 </div>
             </div>
-            <br/>
+            <br />
             <h2 class="heading"> This Week</h2>
+            <div class="forecast"></div>
         </div>
     </div>
 </body>
