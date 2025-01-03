@@ -3,7 +3,7 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins";
     box-sizing: border-box;
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 .weather-input {
-    width: 25%;
+    width: 40%;
     position: fixed;
     inset: 0;
     background: #78c1f3;
@@ -28,8 +28,60 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 2rem;
+    margin: 2rem 0;
 }
-.input-group input{
-    background: white  ;
+
+.input-group input {
+    background: white;
+    text-transform: capitalize;
+    padding: 1rem;
+    font-size: 15px;
+    border-radius: 6px;
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.input-group .converter {
+    position: absolute;
+    right: 45px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+}
+
+.input-group .fa-search {
+    position: absolute;
+    right: 15px;
+    color: #909090;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.weather-output {
+    width: 60%;
+    position: fixed;
+    inset: 0;
+    margin-left: 40%;
+    padding: 2rem;
+    background: white;
+    overflow: auto;
+}
+
+.Highlight {
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    grid-auto-flow: row;
+    row-gap: 1rem;
+    column-gap: 10px;
+}
+.Highlight div{
+    height: 200px;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    background-color: #78c1f3;
+    border-radius: 20px;
+    padding: 1rem;
+
 }
