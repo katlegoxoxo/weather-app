@@ -16,7 +16,7 @@ body {
     align-items: center;
 }
 
-.weatherIcon{
+.weatherIcon {
     background-position: 50% !important;
     background-repeat: no-repeat !important;
     background-size: contain;
@@ -76,19 +76,20 @@ body {
     background: white;
     overflow: auto;
 }
+
 .weather-input .feelsLike,
 .weather-input .description,
 .weather-input .date,
-.weather-input .city{
-padding: 10px 0;
+.weather-input .city {
+    padding: 10px 0;
 
 }
 
-.temparature{
+.temparature {
     font-size: 5rem;
     text-align: center;
-    display:flex;
-
+    display: flex;
+    font-weight: 300;
 }
 
 .Highlight {
@@ -98,7 +99,8 @@ padding: 10px 0;
     row-gap: 1rem;
     column-gap: 10px;
 }
-.Highlight div{
+
+.Highlight div, .forecast div{
     height: 200px;
     display: grid;
     justify-items: center;
@@ -108,13 +110,19 @@ padding: 10px 0;
     padding: 1rem;
 
 }
+.forecast{
+    grid-template-columns: repeat(4, 260px);
+    grid-auto-flow: row; 
+    row-gap: 1rem;
+    column-gap: 10px;
+}
+
 .Highlight i {
     font-size: 45px;
 }
-.sun span{
+
+.sun span {
     align-items: center;
     display: flex;
     gap: 10px;
 }
-
-
