@@ -21,6 +21,9 @@ WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/3.0/onecall?appid=7
 
 
 function findUserLocation() {
+    const forecast = document.querySelector(".forecast");
+
+    forecast.innerHTML = "";
     fetch(WEATHER_API_ENDPOINT + userLocation.value)
         .then((response) => response.json())
         .then((data) => {
@@ -35,7 +38,7 @@ function findUserLocation() {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
-                    temperature.innerHTML = data.current.temp;
+                    temperature.innerHTML = temConverter(data.current.temp);
                     feelsLike.innerHTML = "Feels Like " + data.current.feels_like;
                     description.innerHTML = `<i class= "fa-brands fa-cloudversify"></i> &nbsp; ` + data.current.weather[0].description;
 
@@ -47,9 +50,9 @@ function findUserLocation() {
                         minute: "numeric", // e.g., "30"
                         hour12: false,   // 24-hour format
                     };
-                    
+
                     date.innerHTML = getLongFormateDateTime(data.current.dt, data.timezone_offset, options);
-                    
+
                     HValue.innerHTML = Math.round(data.current.humidity) + "<span>%</span>";
                     WValue.innerHTML = Math.round(data.current.wind_speed) + "<span>m/s</span>";
 
@@ -65,6 +68,35 @@ function findUserLocation() {
                     UVValue.innerHTML = data.current.uvi;
                     PValue.innerHTML = data.current.pressure + "<span>hPa</span>";
 
+                    console.log(data.daily);
+
+                    // Select the forecast container
+                    const forecast = document.querySelector(".forecast");
+
+                    // Iterate over the daily weather data
+                    data.daily.forEach((weather) => {
+                        let div = document.createElement("div");
+                        const options5 = {
+                            weekday: "long", // e.g., "Monday"
+                            month: "long",   // e.g., "January"
+                            day: "numeric",  // e.g., "15"
+
+                        };
+
+                        // Format the date
+                        let daily = getLongFormateDateTime(weather.dt, 0, options5);
+
+                        // Set the formatted date as the content of the div
+                        div.innerHTML = daily;
+                        div.innerHTML = getLongFormateDateTime(weather.dt, 0, options);
+                        // Add the weather icon
+                        div.innerHTML += `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png" alt="${weather.weather[0].description || 'Weather icon'}"/>`;
+
+                        div.innerHTML += `<p class = "forecast-desc>${weather.weather[0].description}"`;
+                        div.innerHTML += `<span><span>${temConverter(weather.temp.min)}</span><span>${temConverter(weather.temp.max)}`
+                        // Append the div to the forecast container
+                        forecast.append(div);
+                    });
 
 
 
@@ -80,4 +112,19 @@ function formatUnixTime(dtValue, offset, options = {}) {
 
 function getLongFormateDateTime(dtValue, offset, options) {
     return formatUnixTime(dtValue, offset, options);
+}
+
+function temConverter(temp) {
+    let tempValue = Math.round(temp);
+    let message = "";
+
+    if (converter.value === "°C") {
+        // Celsius
+        message = `${tempValue}<span>°C</span>`;
+    } else {
+        // Fahrenheit
+        let ctof = Math.round((tempValue * 9) / 5 + 32);
+        message = `${ctof}<span>°F</span>`;
+    }
+    return message;
 }
