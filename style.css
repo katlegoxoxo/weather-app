@@ -9,6 +9,7 @@
 
 body {
     height: 100vh;
+   
 }
 
 .container {
@@ -19,17 +20,18 @@ body {
 .weatherIcon {
     background-position: 50% !important;
     background-repeat: no-repeat !important;
-    background-size: contain;
+    background-size: contain !important;
     display: block;
     height: 25%;
     margin: 2rem auto;
+
 }
 
 .weather-input {
     width: 25%;
     position: fixed;
     inset: 0;
-    background: #78c1f3;
+    background:  #000000;
     padding: 1rem 2.5rem;
 }
 
@@ -75,6 +77,7 @@ body {
     padding: 2rem;
     background: white;
     overflow: auto;
+    color:white;
 }
 
 .weather-input .feelsLike,
@@ -82,22 +85,31 @@ body {
 .weather-input .date,
 .weather-input .city {
     padding: 10px 0;
+    color:white;
 
 }
 
-.temparature {
+.temperature {
     font-size: 5rem;
     text-align: center;
     display: flex;
     font-weight: 300;
+    color: white;
 }
 
+.temperature span{
+    font-size: 2rem;
+    margin-top: 20px;
+    color: white;
+    
+}
 .Highlight {
     display: grid;
-    grid-template-columns: repeat(3, 350px);
+    grid-template-columns: repeat(2, 420px);
     grid-auto-flow: row;
     row-gap: 1rem;
-    column-gap: 10px;
+    column-gap: 50px;
+    color: white;
 }
 
 .Highlight div, .forecast div{
@@ -105,13 +117,14 @@ body {
     display: grid;
     justify-items: center;
     text-align: center;
-    background-color: #78c1f3;
+    background-color: #000000;
     border-radius: 20px;
     padding: 1rem;
 
 }
 .forecast{
-    grid-template-columns: repeat(4, 260px);
+    display: grid;
+    grid-template-columns: repeat(4, 240px);
     grid-auto-flow: row; 
     row-gap: 1rem;
     column-gap: 10px;
@@ -125,4 +138,40 @@ body {
     align-items: center;
     display: flex;
     gap: 10px;
+}
+::-webkit-scrollbar{
+   width: 5px;
+ 
+}
+
+::-webkit-scrollbar-thumb{
+    background: #83838398 ;
+}
+.forecast-desc{
+    color: #7f7f7f;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-bottom: 5px;
+    font-style: italic;
+
+}
+
+.description i{
+    font-size: 25px;
+}
+
+.heading{
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: 700;
+    font:bold;
+    color: black;
+}
+#preloader{
+    background: #000 url(309.gif) no-repeat center;
+    background-size: 5%;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
 }
