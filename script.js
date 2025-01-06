@@ -7,6 +7,7 @@ const userLocation = document.getElementById("userLocation"),
     date = document.querySelector(".date"),
     city = document.querySelector(".city"),
 
+
     HValue = document.getElementById("HValue"),
     WValue = document.getElementById("WValue"),
     SRValue = document.getElementById("SRValue"),
@@ -15,6 +16,14 @@ const userLocation = document.getElementById("userLocation"),
     UVValue = document.getElementById("UVValue"),
     PValue = document.getElementById("PValue"),
     Forcast = document.querySelector(".Forcast");
+
+
+// Add keypress event to userLocation input
+userLocation.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        findUserLocation();
+    }
+});
 
 WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=781a520a555e19715c7c1c576386528b&q=`;
 WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/3.0/onecall?appid=781a520a555e19715c7c1c576386528b&exclude=minutely&units=metric&`;
@@ -92,8 +101,9 @@ function findUserLocation() {
                         // Add the weather icon
                         div.innerHTML += `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png" alt="${weather.weather[0].description || 'Weather icon'}"/>`;
 
-                        div.innerHTML += `<p class = "forecast-desc>${weather.weather[0].description}"`;
-                        div.innerHTML += `<span><span>${temConverter(weather.temp.min)}</span><span>${temConverter(weather.temp.max)}`
+                        div.innerHTML += `<p class = "forecast-desc">${weather.weather[0].description}</p>`;
+                        div.innerHTML += `<span><span>${temConverter(weather.temp.min)}
+                        </span>&nbsp;&nbsp;<span>${temConverter(weather.temp.max)}`
                         // Append the div to the forecast container
                         forecast.append(div);
                     });
