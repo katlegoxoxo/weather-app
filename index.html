@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="preloader"></div>
     <div class="container">
         <div class="weather-input">
             <div class="input-group">
@@ -22,6 +23,7 @@
                     <option>°F</option>
                 </select>
                 <i class="fa fa-search" onclick="findUserLocation()"></i>
+                
             </div>
             <div class="weatherIcon"></div>
             <h2 class="temperature"></h2>
@@ -32,10 +34,10 @@
             <div class="city"></div>
         </div>
         <div class="weather-output">
-            <h2 class="heading">Todays Highlight</h2>
+            <h2 class="heading">Todays Weather</h2>
             <div class="Highlight">
                 <div class="humidity">
-                    humidity
+                    Humidity
                     <i class="fa-solid fa-water"></i>
                     <h1 id="HValue"></h1>
                 </div>
@@ -72,10 +74,18 @@
                 </div>
             </div>
             <br />
-            <h2 class="heading"> This Week</h2>
+            <h2 class="heading"> This Weeks Weather</h2>
             <div class="forecast"></div>
         </div>
     </div>
 </body>
+<script>
+    var loader = document.getElementById("preloader");
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            loader.style.display = "none";
+        }, 1000); // 4000 milliseconds = 4 seconds
+    });
+</script>
 
 </html>
