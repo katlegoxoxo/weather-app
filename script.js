@@ -25,6 +25,8 @@ userLocation.addEventListener("keypress", function (event) {
     }
 });
 
+
+
 WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=781a520a555e19715c7c1c576386528b&q=`;
 WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/3.0/onecall?appid=781a520a555e19715c7c1c576386528b&exclude=minutely&units=metric&`;
 
@@ -89,15 +91,17 @@ function findUserLocation() {
                             weekday: "long", // e.g., "Monday"
                             month: "long",   // e.g., "January"
                             day: "numeric",  // e.g., "15"
-
                         };
-
+                        
                         // Format the date
-                        let daily = getLongFormateDateTime(weather.dt, 0, options5);
+                        let daily1 = getLongFormateDateTime(weather.dt, 0, options5);
+                        console.log(daily1); // Check the output in the console
+
+                        
 
                         // Set the formatted date as the content of the div
-                        div.innerHTML = daily;
-                        div.innerHTML = getLongFormateDateTime(weather.dt, 0, options);
+                        div.innerHTML = daily1;
+                        div.innerHTML = getLongFormateDateTime(weather.dt, 0, options5);
                         // Add the weather icon
                         div.innerHTML += `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png" alt="${weather.weather[0].description || 'Weather icon'}"/>`;
 
@@ -115,14 +119,20 @@ function findUserLocation() {
 }
 
 
-function formatUnixTime(dtValue, offset, options = {}) {
-    const date = new Date((dtValue + offset) * 1000);
+function formatUnixTime(dtValue, offSet, options = {}) {
+    const date = new Date((dtValue + offSet) * 1000);
     return date.toLocaleTimeString([], { timeZone: "UTC", ...options }); // Use toLocaleTimeString for time
 }
 
-function getLongFormateDateTime(dtValue, offset, options) {
-    return formatUnixTime(dtValue, offset, options);
+function getLongFormateDateTime(dtValue, offSet, options) {
+    const hasTimeOptions = options.hour || options.minute; // Check if time options are present
+    const date = new Date((dtValue + offSet) * 1000);
+    if (hasTimeOptions) {
+        return date.toLocaleTimeString([], { timeZone: "UTC", ...options });
+    }
+    return date.toLocaleDateString([], { timeZone: "UTC", ...options }); // Use toLocaleDateString for only date
 }
+
 
 function temConverter(temp) {
     let tempValue = Math.round(temp);
